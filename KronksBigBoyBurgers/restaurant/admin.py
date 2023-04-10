@@ -1,3 +1,4 @@
 from django.contrib import admin
-from models import table
+from .models import Customer, Table, TableCategory, TableBooking
+
 # Register your models here.
