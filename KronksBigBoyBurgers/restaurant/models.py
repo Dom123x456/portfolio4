@@ -1,7 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse_lazy
+
 # Create your models here.
+
 
 class TableCategory(models.Model):
     title = models.CharField(max_length=50)
@@ -16,5 +18,5 @@ class TableCategory(models.Model):
 
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
 
- def __str__(self):
+    def __str__(self):
         return self.title
