@@ -20,3 +20,14 @@ class TableCategory(models.Model):
 
     def __str__(self):
         return self.title
+
+class RestaurantBooking(models.Model):
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    reservation_start = models.DateTimeField()
+    reservation_end = models.DateTimeField()
+
+    def __str__(self):
+        return f'From = {self.reservation_start.strftime("%d-%b-%Y %H:%M")} To = {self.reservation_end.strftime("%d-%b-%Y %H:%M")}'
