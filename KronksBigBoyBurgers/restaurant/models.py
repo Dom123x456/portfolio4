@@ -22,12 +22,17 @@ class TableCategory(models.Model):
         return self.title
 
 class RestaurantBooking(models.Model):
-
+    PAYMENT_STATUSES = (
+        ('COM', 'PAYMENT_COMPLETE'),
+        ('INC', 'PAYMENT_INCOMPLETE'),
+        ('PAR', 'PAYMENT_PARTIALLY_COMPLETE'),
+    )
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
     reservation_start = models.DateTimeField()
     reservation_end = models.DateTimeField()
+    payment_status = models.CharField(max_length=3, choices=PAYMENT_STATUSES)
 
     def __str__(self):
         return f'From = {self.reservation_start.strftime("%d-%b-%Y %H:%M")} To = {self.reservation_end.strftime("%d-%b-%Y %H:%M")}'
