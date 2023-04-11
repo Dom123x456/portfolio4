@@ -4,6 +4,13 @@ from django.urls import reverse_lazy
 
 # Create your models here.
 
+class Table(models.Model):
+    table_number = models.IntegerField(unique=True)
+    capacity = models.IntegerField()
+
+    def __str__(self):
+        return f'Table {self.table_number}'
+
 
 class TableCategory(models.Model):
     title = models.CharField(max_length=50)
