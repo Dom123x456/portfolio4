@@ -33,9 +33,7 @@ SECRET_KEY = 'SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '8000-dom123x456-portfolio4-x9evxr0jpl.us2.codeanyapp.com',
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
