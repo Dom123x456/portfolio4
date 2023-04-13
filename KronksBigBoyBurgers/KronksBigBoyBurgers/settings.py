@@ -159,8 +159,16 @@ STATIC_ROOT = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'KronksBigBoyBurgers/static')
 ]
+LOGIN_REDIRECT_URL = '/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+AUTH_USER_MODEL = 'users.CustomUser'
+# This is needed to remove the error you get after removing username field from user model
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+django_heroku.settings(locals())
