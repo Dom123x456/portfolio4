@@ -65,4 +65,30 @@ class TableDetailView(View):
         else:
             return HttpResponse('Category does not exist')
 
-    
+    def post(self, request, *args, **kwargs):
+        category = self.kwargs.get('category', None)
+        table_list = Table.objects.filter(category=category)
+        form = AvailabilityForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+
+        available_tables = []
+        for table in table_list:
+            if is_table_available(table, data['reservation_start'], data['reservation_end']):
+                available_tables.append(table)
+
+        if len(available_tables) > 0:
+            table = available_tables[0]
+
+            reservation = RestaurantBooking.objects.create(
+                user=self.request.user,
+                table=table,
+                reservation_start=data['reservation_start'],
+                reservation_end=data['reservation_end']
+            )
+            reservation.save()
+            return HttpResponse(reservation)
+        else:
+            return HttpResponse('All tables of this category are booked! Try another one')
+
