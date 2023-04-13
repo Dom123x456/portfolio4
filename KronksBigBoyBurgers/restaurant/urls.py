@@ -7,5 +7,5 @@ urlpatterns = [
     path("reservation-form/", ReservationFormView.as_view(), name="ReservationFormView"),
     path("reservation-list/", ReservationListView.as_view(), name="ReservationListView"),
     path("table-detail/<str:category>/", TableDetailView.as_view(), name="TableDetailView"),
-    path(),
+    path("cancel-reservation/<int:pk>/", CancelReservationView.as_view(), name="CancelReservationView"),
 ]
