@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.views import View
 from django.views.generic import ListViews
 from .models import Table, RestaurantBooking
 from .forms import AvailabilityForm
