@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Kronk's Big Boy Burgers{% endblock %}</title>
+    {% block css %}
+    <!-- Add your CSS files or styles here -->
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <!-- Add your site header or navigation elements here -->
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Content for individual pages will be inserted here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add your site footer elements here -->
+    </footer>
+
+    {% block js %}
+    <!-- Add your JavaScript files or scripts here -->
+    {% endblock %}
+</body>
+</html>
