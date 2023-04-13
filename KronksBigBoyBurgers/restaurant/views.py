@@ -38,3 +38,11 @@ class ReservationFormView(View):
 class ReservationListView(ListView):
     model = RestaurantBooking
     template_name = "reservation_list_view.html"
+    
+    def get_queryset(self, *args, **kwargs):
+        if self.request.user.is_staff:
+            reservation_list = RestaurantBooking.objects.all()
+            return reservation_list
+        else:
+            reservation_list = RestaurantBooking.objects.filter(user=self.request.user)
+            return reservation_list
