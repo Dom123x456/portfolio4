@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.views.generic import ListView, DeleteView
-from .models import Table, RestaurantBooking
+from django.urls import reverse_lazy
 from .forms import AvailabilityForm
 # Create your views here.
 
