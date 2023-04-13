@@ -4,6 +4,7 @@ from django.views.generic import ListView, DeleteView
 from django.urls import reverse_lazy
 from .models import RestaurantBooking, Table
 from .forms import AvailabilityForm
+from .availability import check_table_availability as is_table_available
 import environ
 
 # Create your views here.
