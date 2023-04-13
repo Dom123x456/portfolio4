@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
+    category = models.ForeignKey(TableCategory, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Table {self.table_number}'
