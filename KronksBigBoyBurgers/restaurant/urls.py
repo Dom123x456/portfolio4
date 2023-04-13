@@ -5,7 +5,7 @@ app_name = "restaurant"
 
 urlpatterns = [
     path("reservation-form/", ReservationFormView.as_view(), name="ReservationFormView"),
-    path(),
+    path("reservation-list/", ReservationListView.as_view(), name="ReservationListView"),
     path(),
     path(),
 ]
