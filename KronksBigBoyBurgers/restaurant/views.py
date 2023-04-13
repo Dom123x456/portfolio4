@@ -92,3 +92,8 @@ class TableDetailView(View):
         else:
             return HttpResponse('All tables of this category are booked! Try another one')
 
+class CancelReservationView(DeleteView):
+    model = RestaurantBooking
+    template_name = 'reservation_cancel_view.html'
+    success_url = reverse_lazy('restaurant:ReservationListView')
+
