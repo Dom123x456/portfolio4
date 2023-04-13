@@ -6,6 +6,6 @@ app_name = "restaurant"
 urlpatterns = [
     path("reservation-form/", ReservationFormView.as_view(), name="ReservationFormView"),
     path("reservation-list/", ReservationListView.as_view(), name="ReservationListView"),
-    path(),
+    path("table-detail/<str:category>/", TableDetailView.as_view(), name="TableDetailView"),
     path(),
 ]
