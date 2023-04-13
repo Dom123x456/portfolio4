@@ -1,5 +1,5 @@
 from django import forms
-from .models import Table
+from .models import TableCategory
 
 class AvailabilityForm(forms.Form):
     reservation_start = forms.DateTimeField(
@@ -10,8 +10,8 @@ class AvailabilityForm(forms.Form):
         label='Reservation End',
         widget=forms.TextInput(attrs={'type': 'datetime-local'})
     )
-    table_category = forms.ModelChoiceField(
+    table_category = forms.ChoiceField(
         label='Table Category',
-        queryset=Table.objects.all(),
-        to_field_name='category'
+        choices=TableCategory.CATEGORY_CHOICES,
     )
+
