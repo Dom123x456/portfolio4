@@ -34,3 +34,7 @@ class ReservationFormView(View):
             request.session['amount'] = find_total_table_charge(data['reservation_start'], data['reservation_end'], data['table_category'])
             return redirect('restaurant:CheckoutView')
         return HttpResponse('form not valid', form.errors)
+
+class ReservationListView(ListView):
+    model = RestaurantBooking
+    template_name = "reservation_list_view.html"
