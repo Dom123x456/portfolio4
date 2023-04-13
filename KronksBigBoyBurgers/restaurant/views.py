@@ -39,7 +39,7 @@ class ReservationFormView(View):
 class ReservationListView(ListView):
     model = RestaurantBooking
     template_name = "reservation_list_view.html"
-    
+
     def get_queryset(self, *args, **kwargs):
         if self.request.user.is_staff:
             reservation_list = RestaurantBooking.objects.all()
@@ -47,3 +47,22 @@ class ReservationListView(ListView):
         else:
             reservation_list = RestaurantBooking.objects.filter(user=self.request.user)
             return reservation_list
+
+class TableDetailView(View):
+    def get(self, request, *args, **kwargs):
+        category = self.kwargs.get('category', None)
+        form = AvailabilityForm()
+        table_list = Table.objects.filter(category=category)
+
+        if len(table_list) > 0:
+            table = table_list[0]
+            table_category = dict(table.TABLE_CATEGORIES).get(table.category, None)
+            context = {
+                'table_category': table_category,
+                'form': form,
+            }
+            return render(request, 'table_detail_view.html', context)
+        else:
+            return HttpResponse('Category does not exist')
+
+    
