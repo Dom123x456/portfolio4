@@ -10,8 +10,8 @@ class AvailabilityForm(forms.Form):
         label='Reservation End',
         widget=forms.TextInput(attrs={'type': 'datetime-local'})
     )
-    table_category = forms.ChoiceField(
-        label='Table Category',
-        choices=TableCategory.CATEGORY_CHOICES,
+    table_category = forms.ModelChoiceField(
+    label='Table Category',
+    queryset=TableCategory.objects.all(),
     )
 
