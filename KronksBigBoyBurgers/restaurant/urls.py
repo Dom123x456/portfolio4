@@ -4,7 +4,7 @@ from .views import (ReservationFormView, ReservationListView, TableDetailView, C
 app_name = "restaurant"
 
 urlpatterns = [
-    path(),
+    path("reservation-form/", ReservationFormView.as_view(), name="ReservationFormView"),
     path(),
     path(),
     path(),
