@@ -4,13 +4,10 @@ from django.views.generic import ListView, DeleteView
 from django.urls import reverse_lazy
 from .models import RestaurantBooking, Table
 from .forms import AvailabilityForm
+import environ
+
 # Create your views here.
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
-
-environ.Env.read_env()
 
 class ReservationFormView(View):
     def get(self, request, *args, **kwargs):
