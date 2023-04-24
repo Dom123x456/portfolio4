@@ -14,6 +14,8 @@ MENU_SECTION_CHOICES = (
     (7, "New Food Item"),
     (8, "New Drink Item"),
 )
+
+
 class MenuItem(models.Model):
     """
     Menu items model
@@ -28,3 +30,9 @@ class MenuItem(models.Model):
     menu_section = models.IntegerField(choices=MENU_SECTION_CHOICES)
     on_menu = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-on_menu']
+
+    def __str__(self):
+        return self.item_name
