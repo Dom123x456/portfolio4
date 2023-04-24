@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 #My apps
     'restaurant',
     'restaurant.booking_functions',
-    'menu'
+    'menu',
 ]
 
 MIDDLEWARE = [
