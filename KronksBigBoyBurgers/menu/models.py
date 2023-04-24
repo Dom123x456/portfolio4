@@ -1,12 +1,19 @@
 from django.db import models
 
 # Create your models here.
-class MenuItem(models.Model):
-    CATEGORY_CHOICES = (
-        ('burger', 'Burger'),
-        ('side', 'Side'),
-        ('drink', 'Drink'),
-    )
+ITEM_TYPE_CHOICES = ((0, "Food"), (1, "Drink"))
+
+MENU_SECTION_CHOICES = (
+    (0, "Burgers"),
+    (1, "Sides"),
+    (2, "Desserts"),
+    (3, "Soft Drinks"),
+    (4, "Shakes & Floats"),
+    (5, "Beer"),
+    (6, "Wine & Cocktails"),
+    (7, "New Food Item"),
+    (8, "New Drink Item"),
+)
 
     name = models.CharField(max_length=255)
     description = models.TextField()
