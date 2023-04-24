@@ -5,5 +5,5 @@ from .models import MenuItem
 
 @admin.register(MenuItem)
 class MenuItemAdmin(admin.ModelAdmin):
-    list_filter = ('category', 'price')
-    list_display = ('name', 'category', 'price')
+    list_filter = ('menu_section', 'price', 'item_type', 'on_menu')
+    list_display = ('item_name', 'menu_section', 'price', 'item_type', 'on_menu')
