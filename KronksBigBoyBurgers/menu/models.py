@@ -14,12 +14,17 @@ MENU_SECTION_CHOICES = (
     (7, "New Food Item"),
     (8, "New Drink Item"),
 )
-
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    image = models.ImageField(upload_to='menu_items/', blank=True, null=True)
-
-    def __str__(self):
-        return self.name
+class MenuItem(models.Model):
+    """
+    Menu items model
+    """
+    item_id = models.AutoField(primary_key=True)
+    item_type = models.IntegerField(choices=ITEM_TYPE_CHOICES)
+    item_name = models.CharField(max_length=200, unique=True)
+    description = models.CharField(max_length=200, unique=True)
+    price = models.FloatField()
+    dietary = models.CharField(max_length=200)
+    allergens = models.CharField(max_length=200, null=True)
+    menu_section = models.IntegerField(choices=MENU_SECTION_CHOICES)
+    on_menu = models.BooleanField(default=False)
+    updated_on = models.DateTimeField(auto_now=True)
