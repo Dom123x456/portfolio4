@@ -11,8 +11,6 @@ MENU_SECTION_CHOICES = (
     (4, "Shakes & Floats"),
     (5, "Beer"),
     (6, "Wine & Cocktails"),
-    (7, "New Food Item"),
-    (8, "New Drink Item"),
 )
 
 
