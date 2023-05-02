@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
-import os
+
 import sys
+import os
+os.environ['LD_LIBRARY_PATH'] = '/usr/lib'
+
+
 
 
 def main():
