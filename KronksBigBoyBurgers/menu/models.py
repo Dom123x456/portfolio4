@@ -31,6 +31,7 @@ class MenuItem(models.Model):
 
     class Meta:
         ordering = ['-on_menu']
+        verbose_name_plural = "Menu Items"
 
     def __str__(self):
         return self.item_name
