@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex">
+ <section class="error-page">
+    <div class="heading">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+    </div>
+    <div class="error-content">
+        <p>Sorry, the page you're looking for doesn't exist. Please check the URL or return to the homepage.</p>
+        <a href="{% url 'index' %}" class="btn">Return to Homepage</a>
+    </div>
+ </section>
+</div>
+
+{% endblock %}
