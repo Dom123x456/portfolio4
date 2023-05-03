@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- home section starts  -->
+
+<div class="home-container">
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>Largest Burgers Around</h3>
+            <p>Welcome to Kronks burger restaurant, where you can experience the mouthwatering delight of the Largest Burgers Around.</p>
+            <a href="#" class="btn">order now</a>
+        </div>
+    
+        <div class="image">
+            <img src="{% static 'images/home-img.png' %}" alt="Home image">
+        </div>
+    
+    </section>
+
+</div>
+
+<!-- home section ends -->
+
+{% endblock %}
