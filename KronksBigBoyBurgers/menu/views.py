@@ -55,3 +55,16 @@ def menu(request):
 
     return render(request, 'menu.html', context)
 
+class FoodMenu(generic.ListView):
+    """
+    Render food menus as a list of items from the database
+    """
+    model = FoodItem
+    template_name = 'food_menu.html'
+    context_object_name = 'food_items'
+
+    def get_queryset(self):
+        queryset = FoodItem.objects.filter(on_menu=True)
+        return queryset
+
+
