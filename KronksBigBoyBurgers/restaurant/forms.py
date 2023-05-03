@@ -1,6 +1,8 @@
 from django import forms
 from .models import TableCategory
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from .forms import RegistrationForm
 
 class AvailabilityForm(forms.Form):
     reservation_start = forms.DateTimeField(
