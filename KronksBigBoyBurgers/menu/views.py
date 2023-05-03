@@ -68,3 +68,19 @@ class FoodMenu(generic.ListView):
         return queryset
 
 
+class DrinksMenu(generic.ListView):
+    """
+    Render drinks menus as a list of items from the database
+    """
+    model = DrinkItem
+    template_name = 'drinks_menu.html'
+    context_object_name = 'drinks_items'
+
+    def get_queryset(self):
+        queryset = {
+            'hot_drinks': DrinkItem.objects.filter(on_menu=True, drinks_menu_section=0),
+            'kids_drinks': DrinkItem.objects.filter(on_menu=True, drinks_menu_section=1),
+            'beverages_alcohol': DrinkItem.objects.filter(on_menu=True, drinks_menu_section=2)
+        }
+        return queryset
+
