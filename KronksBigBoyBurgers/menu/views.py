@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from .models import MenuItem
-# Create your views here.
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import generic
+from .models import MenuItem, FoodItem, DrinkItem
+from django.contrib.auth.decorators import login_required
+from .forms import MenuItemForm
+from django.core.paginator import Paginator
 
-def menu(request):
-    menu_items = MenuItem.objects.all()
-    return render(request, 'menu/menu.html', {'menu_items': menu_items})
