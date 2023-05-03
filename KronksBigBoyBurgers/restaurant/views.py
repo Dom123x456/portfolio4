@@ -4,8 +4,12 @@ from django.views.generic import ListView, DeleteView
 from django.urls import reverse_lazy
 from .models import RestaurantBooking, Table
 from .forms import AvailabilityForm
-from .availability import check_table_availability as is_table_available
+from KronksBigBoyBurgers.booking_functions.availability import check_table_availability as is_table_available
+from KronksBigBoyBurgers.booking_functions.availability import find_total_table_charge  # Add this import
 import environ
+from django.contrib.auth import login, authenticate
+from .forms import RegistrationForm
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 
@@ -96,4 +100,5 @@ class CancelReservationView(DeleteView):
     model = RestaurantBooking
     template_name = 'reservation_cancel_view.html'
     success_url = reverse_lazy('restaurant:ReservationListView')
+
 
