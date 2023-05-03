@@ -13,6 +13,15 @@ from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 
+class CheckoutView(View):
+    def get(self, request, *args, **kwargs):
+        # Your code to handle GET request
+        return render(request, 'checkout.html')
+
+    def post(self, request, *args, **kwargs):
+        # Your code to handle POST request
+        pass
+
 
 class ReservationFormView(View):
     def get(self, request, *args, **kwargs):
