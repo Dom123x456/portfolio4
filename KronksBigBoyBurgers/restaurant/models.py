@@ -1,17 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse_lazy
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
-
-class Table(models.Model):
-    table_number = models.IntegerField(unique=True)
-    capacity = models.IntegerField()
-    category = models.ForeignKey(TableCategory, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'Table {self.table_number}'
-
 
 class TableCategory(models.Model):
     title = models.CharField(max_length=50)
@@ -29,6 +20,17 @@ class TableCategory(models.Model):
     def __str__(self):
         return self.title
 
+
+class Table(models.Model):
+    table_number = models.IntegerField(unique=True)
+    capacity = models.IntegerField()
+    category = models.ForeignKey(TableCategory, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Table {self.table_number}'
+
+
+
 class RestaurantBooking(models.Model):
     PAYMENT_STATUSES = (
         ('COM', 'PAYMENT_COMPLETE'),
@@ -44,3 +46,4 @@ class RestaurantBooking(models.Model):
 
     def __str__(self):
         return f'From = {self.reservation_start.strftime("%d-%b-%Y %H:%M")} To = {self.reservation_end.strftime("%d-%b-%Y %H:%M")}'
+
