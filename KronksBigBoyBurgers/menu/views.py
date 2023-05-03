@@ -84,3 +84,24 @@ class DrinksMenu(generic.ListView):
         }
         return queryset
 
+@login_required
+def edit_menu_item(request, item_id=None):
+    if item_id:
+        menu_item = get_object_or_404(MenuItem, item_id=item_id)
+    else:
+        menu_item = MenuItem()
+
+    if request.method == 'POST':
+        form = MenuItemForm(request.POST, instance=menu_item)
+        if form.is_valid():
+            form.save()
+            return redirect('menus')
+    else:
+        form = MenuItemForm(instance=menu_item)
+
+    context = {
+        'form': form,
+        'menu_item': menu_item,
+    }
+
+    
