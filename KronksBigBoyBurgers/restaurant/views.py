@@ -111,3 +111,47 @@ class CancelReservationView(DeleteView):
     success_url = reverse_lazy('restaurant:ReservationListView')
 
 
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = RegistrationForm()
+    return render(request, 'register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+    return render(request, 'login.html')
+
+
+@user_passes_test(user_check)
+def user_view(request):
+    # Your user view logic here
+    context = {
+        "user": request.user,
+        "message": "Welcome to the User Dashboard!",
+    }
+    return render(request, "dashboard.html", context)
+
+@user_passes_test(admin_check)
+def admin_view(request):
+    # Your admin view logic here
+    reservations = RestaurantBooking.objects.all()
+    users = CustomUser.objects.filter(role='user')
+    context = {
+        "user": request.user,
+        "message": "Welcome to the Admin Dashboard!",
+        "reservations": reservations,
+        "users": users,
+    }
+    return render(request, "dashboard.html", context)
