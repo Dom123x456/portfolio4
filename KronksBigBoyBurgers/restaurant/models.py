@@ -47,3 +47,10 @@ class RestaurantBooking(models.Model):
     def __str__(self):
         return f'From = {self.reservation_start.strftime("%d-%b-%Y %H:%M")} To = {self.reservation_end.strftime("%d-%b-%Y %H:%M")}'
 
+
+class CustomUser(AbstractUser):
+    ROLE_CHOICES = (
+        ('user', 'User'),
+        ('admin', 'Admin'),
+    )
+    role = models.CharField(max_length=5, choices=ROLE_CHOICES, default='user')
